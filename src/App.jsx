@@ -1,20 +1,14 @@
-// App.jsx — ZYPP en React (tout-en-un, avec parallaxe)
-// ---------------------------------------------------------------
-// ✅ Objectif : Page marketing ZYPP, prête à éclater en composants
-// ✅ Bonus : Effets "reveal" + parallaxe léger (désactivés si reduce-motion)
-// ✅ Assets : placez troty.jpg et qrcode.png dans /public (racine Vite)
-// ✅ Démarrage : Vite
-//    npm create vite@latest zypp -- --template react
-//    cd zypp && npm i
-//    remplacez src/App.jsx par ce fichier
-//    npm run dev
-// ---------------------------------------------------------------
+
 
 import { useEffect, useRef, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Welcome from "./pages/Welcome.jsx";
+import Rechargeur from "./pages/Rechargeur.jsx";  
+import Apropos from "./pages/Apropos.jsx"; 
+import Tarifs from "./pages/Tarifs.jsx";  
+import Contact from "./pages/Contact.jsx";                    
 
 
 // ---------------------------------------------------------------
@@ -168,6 +162,47 @@ footer { border-top: 1px solid var(--border); padding: 26px 0; color: #475569 }
 .foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
 .foot .logo-badge { inline-size: 28px; block-size: 28px; border-radius: 8px }
 
+
+/*valuer*/
+.values-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-top: 50px;
+}
+
+.value-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,.05);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 35px rgba(0,0,0,.08);
+}
+
+.value-icon {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.value-title {
+  font-size: 1.3rem;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.value-text {
+  font-size: 1rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+
 /* Accessibilité & reveals */
 .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden }
 .skip-link:focus { left: 16px; top: 16px; width: auto; height: auto; padding: .5rem .75rem; z-index: 9999; background: #111; color: #fff; border-radius: 8px; outline: 3px solid color-mix(in oklab, var(--accent), white 30%) }
@@ -257,9 +292,9 @@ function useParallax(selector = "[data-parallax]") {
         const rot = (parseFloat(el.getAttribute("data-parallax-rot")) || 0) * strength;
         const sc = parseFloat(el.getAttribute("data-parallax-scale")) || 0;
 
-        const tx = -px * dist * 60;      // 60px max approx
+        const tx = -px * dist * 60;      
         const ty = -py * dist * 60;
-        const r = -rot * dist * 6;       // 6deg max approx
+        const r = -rot * dist * 6;       
         const s = 1 + (sc * -dist * 0.06);
 
         const parts = [
@@ -350,7 +385,7 @@ function LogoBadge({ size = 120 }) {
       }}
     >
       <img
-        src="/src/img/logo.jpg"
+        src="img/logo.jpg"
         alt="Logo ZYPP"
         className="logo-img"
         style={{
@@ -471,11 +506,17 @@ function MainNav() {
   return (
     <nav className="main" aria-label="Navigation principale">
       <a href="#top" aria-current="page">Accueil</a>
-      <a href="#">Devenir rechargeur </a>
+        <Link  to="/rechargeur" role="menuitem">
+          Devenirchargeur
+        </Link>
       <a href="#pricing">Tarifs</a>
       <a href="#reviews">Avis</a>
-      <a href="#about">À propos</a>
-      <a href="#support">Support</a>
+         <Link to="/apropos" role="menuitem">
+         À propos
+        </Link>
+       <Link to="/contact" role="menuitem">
+         Nos contactez
+        </Link>
       <AccountMenu />
       <CtaButton href="#download">Télécharger l’application</CtaButton>
     </nav>
@@ -524,7 +565,7 @@ function Hero() {
         </div>
         <aside className="reveal" aria-hidden="true">
           <div className="app-frame" data-parallax data-parallax-y="0.08" data-parallax-x="0.04" data-parallax-rot="0.15" data-parallax-scale="0.5">
-            <img className="app-visual" src="../src/img/troty.jpg" alt="Écran de l’app ZYPP affichant la carte, les zones sûres et le bouton Scanner" />
+            <img className="app-visual" src="img/troty.jpg" alt="Écran de l’app ZYPP affichant la carte, les zones sûres et le bouton Scanner" />
           </div>
         </aside>
       </div>
@@ -595,6 +636,52 @@ function PricingSection() {
   );
 }
 
+function ValueCard({ icon, title, text }) {
+  return (
+    <div className="value-card reveal" data-parallax data-parallax-y="0.03">
+      <div className="value-icon">{icon}</div>
+      <h3 className="value-title">{title}</h3>
+      <p className="value-text">{text}</p>
+    </div>
+  );
+}
+
+function ValeursSection() {
+  const valeurs = [
+    {
+      icon: "🌱",
+      title: "Durabilité",
+      text: "Une mobilité qui respecte la planète et réduit les émissions de CO₂ grâce à des trottinettes éco-conçues.",
+    },
+    {
+      icon: "🤝",
+      title: "Accessibilité",
+      text: "Un service simple, intuitif et abordable, pour que chacun puisse se déplacer librement en ville.",
+    },
+    {
+      icon: "⚡",
+      title: "Innovation",
+      text: "Des solutions toujours plus intelligentes pour une mobilité fluide et connectée.",
+    },
+  ];
+
+  return (
+    <Section
+      id="valeurs"
+      title="Nos Valeurs"
+      subtitle="Ce qui nous guide au quotidien"
+    >
+      <div className="values-grid">
+        {valeurs.map((v, i) => (
+          <ValueCard key={i} icon={v.icon} title={v.title} text={v.text} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+
+
 function ReviewCard({ avatar, name, stars, quote }) {
   return (
     <figure className="card review reveal" data-parallax data-parallax-y="0.025">
@@ -637,7 +724,7 @@ function DownloadSection() {
           </div>
         </div>
         <div className="qr reveal" data-parallax data-parallax-y="0.05" data-parallax-scale="0.6">
-          <img src="../src/img/qrcode.png" alt="QR code pour télécharger ZYPP" width="160" height="160" loading="lazy" />
+          <img src="img/qrcode.png" alt="QR code pour télécharger ZYPP" width="160" height="160" loading="lazy" />
           <span className="muted">Scannez pour télécharger</span>
         </div>
       </div>
@@ -690,6 +777,7 @@ export default function App() {
               <Hero />
               <FeaturesSection />
               <PricingSection />
+              <ValeursSection />
               <ReviewsSection />
               <DownloadSection />
             </div>
@@ -698,6 +786,11 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
          <Route path="/welcome" element={<Welcome />} /> 
+          <Route path="/rechargeur" element={<Rechargeur />} />
+          <Route path="/apropos" element={<Apropos />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/tarif" element={<Tarifs />} />
+          
       </Routes>
 
       <Footer />

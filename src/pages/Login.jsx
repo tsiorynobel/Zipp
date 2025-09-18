@@ -176,7 +176,7 @@ export default function Login() {
 
       {/* Illustration gauche */}
       <div className="login-illustration">
-        <img src="/src/img/troty.jpg" alt="Trottinette ZYPP et application mobile" />
+        <img src="img/troty.jpg" alt="Trottinette ZYPP et application mobile" />
       </div>
 
       {/* Formulaire droite */}
