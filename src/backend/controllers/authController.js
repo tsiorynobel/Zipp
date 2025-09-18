@@ -1,24 +1,15 @@
-/* eslint-env node */
-
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { db } from "../db/connection.js";
 
-// ----- INSCRIPTION -----
 export async function register(req, res) {
   try {
     const { lastname, firstname, birthdate, address, email, password, profileImage } = req.body;
-
-    // Vérifier si email déjà utilisé
     const [existing] = await db.execute("SELECT id FROM users WHERE email = ?", [email]);
     if (existing.length > 0) {
       return res.status(400).json({ message: "Email déjà utilisé" });
     }
-
-    // Hasher le mot de passe
     const hashed = await bcrypt.hash(password, 10);
-
-    // Insérer le nouvel utilisateur
     await db.execute(
       "INSERT INTO users (lastname, firstname, birthdate, address, email, password, profileImage) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [lastname, firstname, birthdate, address, email, hashed, profileImage]

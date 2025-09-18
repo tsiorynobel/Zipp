@@ -1,43 +1,9 @@
 import { useState } from "react";
+import "../styles/Apropos.css";
 
 export default function Apropos() {
   return (
     <section className="apropos-page">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-        .apropos-page {
-          font-family: 'Inter', sans-serif;
-          background: #f8fafc;
-          min-height: 100vh;
-          padding: 60px 20px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .apropos-container {
-          max-width: 900px;
-          background: #ffffff;
-          border-radius: 16px;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-          padding: 50px 40px;
-          line-height: 1.7;
-        }
-
-        .apropos-container h2 {
-          font-size: 2rem;
-          margin-bottom: 20px;
-          color: #ff6a00;
-          text-align: center;
-        }
-
-        .apropos-container p {
-          color: #334155;
-          font-size: 1.1rem;
-          text-align: justify;
-        }
-      `}</style>
 
       <div className="apropos-container">
         <h2>À propos de Zypp</h2>

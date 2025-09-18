@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Tarifs.css";
 
 function PlanCard({ name, price, features, ctaLabel, highlight }) {
   return (
@@ -65,100 +66,6 @@ export default function Tarifs() {
           librement. Aucun engagement, juste la liberté de vous déplacer.
         </p>
       </div>
-
-      <style>{`
-        .section {
-          padding: 60px 20px;
-          max-width: 1100px;
-          margin: 0 auto;
-          text-align: center;
-        }
-        .section h2 {
-          font-size: 2.2rem;
-          margin-bottom: 6px;
-        }
-        .section .subtitle {
-          color: var(--muted);
-          margin-bottom: 40px;
-        }
-
-        .pricing {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          margin-bottom: 40px;
-        }
-        @media (max-width: 980px) {
-          .pricing { grid-template-columns: 1fr; }
-        }
-
-        .plan {
-          background: var(--elev);
-          border: 1px solid var(--border);
-          border-radius: var(--radius);
-          padding: 24px;
-          box-shadow: var(--shadow-1);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-        .plan.pop {
-          outline: 2px solid color-mix(in oklab, var(--accent), white 30%);
-        }
-        .plan h3 {
-          margin-bottom: 10px;
-          font-size: 1.4rem;
-        }
-        .price {
-          font-family: var(--serif);
-          font-size: var(--fs-44, 2rem);
-          font-weight: 700;
-          margin-bottom: 16px;
-        }
-        .list {
-          list-style: none;
-          padding: 0;
-          margin: 0 0 20px;
-        }
-        .list li {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin: 8px 0;
-        }
-        .check {
-          width: 18px;
-          height: 18px;
-          display: grid;
-          place-items: center;
-          border-radius: 999px;
-          background: color-mix(in oklab, var(--accent), white 85%);
-          color: #0b0b0d;
-          font-weight: 800;
-          font-size: 0.8rem;
-        }
-        .cta {
-          background: var(--accent);
-          border: none;
-          color: #fff;
-          padding: 10px 20px;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: background 0.2s;
-        }
-        .cta:hover {
-          background: var(--accent-600);
-        }
-
-        .pricing-text p {
-          max-width: 700px;
-          margin: 0 auto;
-          color: var(--muted);
-          line-height: 1.6;
-          font-size: 1.1rem;
-        }
-      `}</style>
     </Section>
   );
 }

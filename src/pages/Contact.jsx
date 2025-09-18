@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/Contact.css";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -12,80 +13,14 @@ export default function Contact() {
     console.log("Email :", email);
     console.log("Sujet :", subject);
     console.log("Message :", message);
-    alert("Votre message a bien été envoyé ✅");
-    // ⚠️ Tu pourrais ici envoyer les données vers ton backend
+    alert("Votre message a bien été envoyé ");
   };
 
   return (
     <section className="contact-section">
-      <style>{`
-        .contact-section {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 60px 20px;
-          font-family: Inter, sans-serif;
-          display: grid;
-          gap: 40px;
-        }
-
-        .contact-form {
-          background: #ffffff;
-          padding: 40px 36px;
-          border-radius: 20px;
-          box-shadow: 0 10px 30px rgba(0,0,0,.05);
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .contact-form h2 {
-          margin: 0 0 4px;
-          font-size: 28px;
-          color: #111827;
-        }
-
-        .contact-form p {
-          margin: 0 0 20px;
-          color: #6b7280;
-          font-size: 15px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-          padding: 14px;
-          border: 1px solid #d1d5db;
-          border-radius: 10px;
-          font-size: 15px;
-          transition: border-color 0.2s, box-shadow 0.2s;
-          resize: none;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-          border-color: #ff6a00;
-          outline: none;
-          box-shadow: 0 0 0 3px rgba(255,106,0,.15);
-        }
-
-        .contact-btn {
-          background: #ff6a00;
-          color: #fff;
-          padding: 14px;
-          font-weight: 700;
-          font-size: 16px;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: background .2s;
-        }
-        .contact-btn:hover {
-          background: #e65f02;
-        }
-      `}</style>
-
       <form className="contact-form" onSubmit={handleSubmit}>
         <h2>Contactez-nous</h2>
-        <p>Une question, une suggestion ? Nous vous répondons rapidement ⚡</p>
+        <p>Une question, une suggestion ? Nous vous répondons rapidement </p>
 
         <input
           type="text"
