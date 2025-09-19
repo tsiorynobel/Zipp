@@ -318,8 +318,8 @@ function PricingSection() {
     <Section id="pricing" title="Des tarifs clairs" subtitle="Choisissez, roulez, c’est tout.">
       <div className="pricing">
         <PlanCard name="À la minute" price="0,15€/min" features={["Déverrouillage 1€", "Sans engagement"]} ctaLabel="Commencer" />
-        <PlanCard name="Cap tarif" price="5,99€/trajet" features={["Plafond automatique", "Idéal trajets longs"]} ctaLabel="Choisir" highlight />
-        <PlanCard name="Crédit" price="Dès 9,99€" features={["Minutes sans expiration", "Partageables"]} ctaLabel="Acheter" />
+        <PlanCard name="Cap tarif" price="5,99€/trajet" features={["Plafond automatique", "Idéal trajets longs 33 min"]} ctaLabel="Choisir" highlight />
+        <PlanCard name="Crédit" price="Dès 50€" features={["Minutes sans expiration", "Partageables"]} ctaLabel="Acheter" />
       </div>
     </Section>
   );
