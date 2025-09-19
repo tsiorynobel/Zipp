@@ -46,13 +46,13 @@ export default function Tarifs() {
         <PlanCard
           name="Cap tarif"
           price="5,99€/trajet"
-          features={["Plafond automatique", "Idéal trajets longs"]}
+          features={["Plafond automatique", "Idéal trajets longs 33 min"]}
           ctaLabel="Choisir"
           highlight
         />
         <PlanCard
           name="Crédit"
-          price="Dès 9,99€"
+          price="Dès 50€"
           features={["Minutes sans expiration", "Partageables"]}
           ctaLabel="Acheter"
         />
