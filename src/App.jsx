@@ -35,7 +35,7 @@ function LogoBadge({ size = 120 }) {
       }}
     >
       <img
-        src="img/logo.jpg"
+        src="../public/img/logo.jpg"
         alt="Logo ZYPP"
         className="logo-img"
         style={{
